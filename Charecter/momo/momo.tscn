@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkqrt4unvppam"]
+
+[ext_resource type="Texture2D" uid="uid://cgd7do68q4rn8" path="res://Charecter/momo/momo.png" id="1_vcjxc"]
+[ext_resource type="Texture2D" uid="uid://bc3qn17i5gjwd" path="res://Charecter/momo/fire2.png" id="2_m2iot"]
+[ext_resource type="Texture2D" uid="uid://cbmwvd1qh3es" path="res://Charecter/momo/fire3.png" id="3_ipcjy"]
+[ext_resource type="Texture2D" uid="uid://lkd8ptwxvquj" path="res://Charecter/momo/fire4.png" id="4_et3kl"]
+[ext_resource type="Texture2D" uid="uid://bic8mwwtpjpj5" path="res://Charecter/momo/fire0.png" id="5_30lha"]
+[ext_resource type="Texture2D" uid="uid://bsk3q3mfdlfm" path="res://Charecter/momo/fire1.png" id="6_dqtb7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rlta6"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m2iot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ipcjy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_et3kl")
+}],
+"loop": true,
+"name": &"Speed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_30lha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dqtb7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10ip6"]
+radius = 99.643
+height = 688.278
+
+[node name="momo" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vcjxc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(-497, 6)
+sprite_frames = SubResource("SpriteFrames_rlta6")
+animation = &"Dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 11)
+rotation = 1.54771
+shape = SubResource("CapsuleShape2D_10ip6")

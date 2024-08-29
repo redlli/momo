@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8n26c4geid7c"]
+
+[ext_resource type="Texture2D" uid="uid://dmjdttxpsvna2" path="res://thems/base/start.png" id="1_5kr7t"]
+[ext_resource type="Script" path="res://ui/start.gd" id="1_nf14s"]
+[ext_resource type="Texture2D" uid="uid://ccsmwjjnmji3m" path="res://thems/base/unmute.png" id="2_t0kp6"]
+[ext_resource type="Texture2D" uid="uid://bo8hcmstjvhsw" path="res://thems/base/mute.png" id="3_r51il"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ihqti"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nf14s")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.25, 323.75)
+scale = Vector2(1153.5, 648.5)
+texture = SubResource("CanvasTexture_ihqti")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -70.0
+offset_right = 155.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Start" type="Sprite2D" parent="Start"]
+position = Vector2(156.25, 67.6516)
+scale = Vector2(0.389764, 0.389764)
+texture = ExtResource("1_5kr7t")
+
+[node name="Sound" type="TouchScreenButton" parent="."]
+position = Vector2(14, 13)
+scale = Vector2(0.485207, 0.448113)
+texture_normal = ExtResource("2_t0kp6")
+texture_pressed = ExtResource("3_r51il")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
