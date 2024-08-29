@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8n26c4geid7c"]
+[gd_scene load_steps=7 format=3 uid="uid://c8n26c4geid7c"]
 
 [ext_resource type="Texture2D" uid="uid://dmjdttxpsvna2" path="res://thems/base/start.png" id="1_5kr7t"]
 [ext_resource type="Script" path="res://ui/start.gd" id="1_nf14s"]
 [ext_resource type="Texture2D" uid="uid://ccsmwjjnmji3m" path="res://thems/base/unmute.png" id="2_t0kp6"]
 [ext_resource type="Texture2D" uid="uid://bo8hcmstjvhsw" path="res://thems/base/mute.png" id="3_r51il"]
+[ext_resource type="AudioStream" uid="uid://dhxjllgb58jgp" path="res://thems/base/BGM.wav" id="5_86bju"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ihqti"]
 
@@ -17,6 +18,11 @@ grow_vertical = 2
 script = ExtResource("1_nf14s")
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.25, 323.75)
+scale = Vector2(1153.5, 648.5)
+texture = SubResource("CanvasTexture_ihqti")
+
+[node name="Background" type="Sprite2D" parent="Background"]
 position = Vector2(576.25, 323.75)
 scale = Vector2(1153.5, 648.5)
 texture = SubResource("CanvasTexture_ihqti")
@@ -46,5 +52,8 @@ position = Vector2(14, 13)
 scale = Vector2(0.485207, 0.448113)
 texture_normal = ExtResource("2_t0kp6")
 texture_pressed = ExtResource("3_r51il")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_86bju")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

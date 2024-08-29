@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bklcgkw81km5i"]
+
+[ext_resource type="PackedScene" uid="uid://bkqrt4unvppam" path="res://Charecter/momo/momo.tscn" id="1_m1hm1"]
+[ext_resource type="Script" path="res://thems/base/game.gd" id="1_ogl7l"]
+[ext_resource type="AudioStream" uid="uid://dhxjllgb58jgp" path="res://thems/base/BGM.wav" id="1_rmgu2"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_knwp0"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ogl7l")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.25, 323.75)
+scale = Vector2(1153.5, 648.5)
+texture = SubResource("CanvasTexture_knwp0")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="Background"]
+stream = ExtResource("1_rmgu2")
+
+[node name="momo" parent="." instance=ExtResource("1_m1hm1")]
+position = Vector2(231, 333)
+scale = Vector2(0.280001, 0.280001)
+
+[node name="AnimatedSprite2D" parent="momo/Sprite2D" index="0"]
+animation = &"Speed"
+frame_progress = 0.217232
+
+[editable path="momo"]
