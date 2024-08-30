@@ -5,12 +5,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifp3p"]
 radius = 49.0408
 
-[node name="Coin" type="Sprite2D"]
-position = Vector2(1246, 409.692)
+[node name="Coin" type="Sprite2D" groups=["coin"]]
+position = Vector2(1103, 39)
 scale = Vector2(0.461539, 0.461539)
 texture = ExtResource("1_18u5b")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="Area2D" parent="." groups=["coin"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["coin"]]
 shape = SubResource("CircleShape2D_ifp3p")

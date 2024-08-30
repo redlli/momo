@@ -1,20 +1,30 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+var up=false
+var down=false
 
 func _physics_process(delta):
-	# Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-
 	$Sprite2D/AnimatedSprite2D.play("Speed")
-	var direction = Input.get_axis("ui_up", "ui_down")
-	if direction:
-		velocity.y = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if up==true :
+		self.position.y -= SPEED * get_process_delta_time()
 
-	move_and_slide()
+	elif down==true:
+		self.position.y += SPEED * get_process_delta_time()
+
+func _input(event):
+	if event.is_action_pressed("ui_up"):
+		down=false
+		up=true
+	elif event.is_action_pressed("ui_down"):
+		up=false
+		down=true
+
+func _on_down_button_down():
+	up=false
+	down=true
+
+func _on_up_button_down():
+	down=false
+	up=true
+	

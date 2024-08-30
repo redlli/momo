@@ -1,21 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bklcgkw81km5i"]
+[gd_scene load_steps=7 format=3 uid="uid://bklcgkw81km5i"]
 
 [ext_resource type="PackedScene" uid="uid://bkqrt4unvppam" path="res://Charecter/momo/momo.tscn" id="1_m1hm1"]
 [ext_resource type="Script" path="res://thems/base/game.gd" id="1_ogl7l"]
-[ext_resource type="AudioStream" uid="uid://dhxjllgb58jgp" path="res://thems/base/BGM.wav" id="1_rmgu2"]
+[ext_resource type="PackedScene" uid="uid://tsuyculavnpe" path="res://thems/base/background.tscn" id="2_avamr"]
+[ext_resource type="Texture2D" uid="uid://c8wbcqoauleys" path="res://thems/base/ground.png" id="4_0jjnq"]
+[ext_resource type="Texture2D" uid="uid://b2etm28168we8" path="res://thems/base/ground1.png" id="5_3cl7f"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_knwp0"]
+[sub_resource type="Theme" id="Theme_bbhkx"]
+default_font_size = 70
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ogl7l")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576.25, 323.75)
-scale = Vector2(1153.5, 648.5)
-texture = SubResource("CanvasTexture_knwp0")
-
-[node name="BGM" type="AudioStreamPlayer2D" parent="Background"]
-stream = ExtResource("1_rmgu2")
+[node name="Background" parent="." instance=ExtResource("2_avamr")]
 
 [node name="momo" parent="." instance=ExtResource("1_m1hm1")]
 position = Vector2(231, 333)
@@ -24,5 +21,45 @@ scale = Vector2(0.280001, 0.280001)
 [node name="AnimatedSprite2D" parent="momo/Sprite2D" index="0"]
 animation = &"Speed"
 frame_progress = 0.217232
+
+[node name="G0" type="Sprite2D" parent="."]
+position = Vector2(762, 511)
+scale = Vector2(1.055, 0.38)
+texture = ExtResource("4_0jjnq")
+
+[node name="G1" type="Sprite2D" parent="."]
+position = Vector2(2754, 520.82)
+scale = Vector2(1.055, 0.38)
+texture = ExtResource("5_3cl7f")
+
+[node name="Score" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 516.0
+offset_top = 14.0
+offset_right = 668.0
+offset_bottom = 133.0
+theme = SubResource("Theme_bbhkx")
+text = "0"
+fit_content = true
+
+[node name="up" type="Button" parent="."]
+offset_left = 28.0
+offset_top = 552.0
+offset_right = 187.0
+offset_bottom = 625.0
+action_mode = 0
+text = "UP"
+
+[node name="Down" type="Button" parent="."]
+offset_left = 971.0
+offset_top = 552.0
+offset_right = 1130.0
+offset_bottom = 625.0
+action_mode = 0
+text = "Down"
+
+[connection signal="area_entered" from="momo/Area2D" to="." method="_on_momo_colid"]
+[connection signal="button_down" from="up" to="momo" method="_on_up_button_down"]
+[connection signal="button_down" from="Down" to="momo" method="_on_down_button_down"]
 
 [editable path="momo"]

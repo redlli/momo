@@ -15,6 +15,12 @@ run/main_scene="res://ui/start.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+player="player"
+block=""
+coin=""
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true

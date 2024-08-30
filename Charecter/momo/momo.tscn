@@ -45,7 +45,7 @@ animations = [{
 radius = 99.643
 height = 688.278
 
-[node name="momo" type="CharacterBody2D"]
+[node name="momo" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ynxq5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -56,7 +56,9 @@ position = Vector2(-497, 6)
 sprite_frames = SubResource("SpriteFrames_rlta6")
 animation = &"Dead"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
 position = Vector2(-1, 11)
 rotation = 1.54771
 shape = SubResource("CapsuleShape2D_10ip6")
