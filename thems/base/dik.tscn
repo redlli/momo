@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://do24gyh1pbm23"]
+
+[ext_resource type="Texture2D" uid="uid://c1ytepqh52id" path="res://thems/base/dik.png" id="1_bo8cs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aiqa4"]
+radius = 9.68116
+height = 19.3623
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c82d7"]
+size = Vector2(29.0089, 23.046)
+
+[node name="Dik" type="Sprite2D" groups=["block"]]
+scale = Vector2(0.356431, 0.356431)
+texture = ExtResource("1_bo8cs")
+
+[node name="Area2D" type="Area2D" parent="." groups=["block"]]
+
+[node name="Head" type="CollisionShape2D" parent="Area2D" groups=["block"]]
+position = Vector2(-11.2224, 11.2224)
+scale = Vector2(18.1263, -3.18779)
+shape = SubResource("CapsuleShape2D_aiqa4")
+
+[node name="Body" type="CollisionShape2D" parent="Area2D" groups=["block"]]
+position = Vector2(68.737, -1.33781e-06)
+rotation = -3.14159
+scale = Vector2(7.25363, 6.08694)
+shape = SubResource("RectangleShape2D_c82d7")

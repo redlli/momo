@@ -23,7 +23,6 @@ texture = ExtResource("1_65lg5")
 
 [node name="StaticBody2D2" type="Area2D" parent="Sprite2D" groups=["block"]]
 position = Vector2(0, 0.00012207)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2" groups=["block"]]
 position = Vector2(-10.563, -10.0182)

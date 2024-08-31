@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://tsuyculavnpe"]
+[gd_scene load_steps=5 format=3 uid="uid://tsuyculavnpe"]
 
 [ext_resource type="Script" path="res://thems/base/background.gd" id="1_ha1gy"]
 [ext_resource type="AudioStream" uid="uid://dhxjllgb58jgp" path="res://thems/base/BGM.wav" id="1_vxal4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2ct7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpme2"]
+size = Vector2(20, 0.962991)
 
 [node name="Background" type="Node2D"]
 scale = Vector2(1153.5, 648.5)
@@ -16,3 +19,19 @@ texture = SubResource("CanvasTexture_2ct7m")
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_vxal4")
+
+[node name="Area2D" type="Area2D" parent="." groups=["block"]]
+position = Vector2(0, -0.0616808)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["block"]]
+position = Vector2(0.504551, -0.126446)
+scale = Vector2(0.0550008, -0.0705668)
+shape = SubResource("RectangleShape2D_xpme2")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["block"]]
+position = Vector2(0, 1.30146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" groups=["block"]]
+position = Vector2(0.504551, -0.126446)
+scale = Vector2(0.0550008, -0.0705668)
+shape = SubResource("RectangleShape2D_xpme2")

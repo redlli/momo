@@ -1,13 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bklcgkw81km5i"]
+[gd_scene load_steps=12 format=3 uid="uid://bklcgkw81km5i"]
 
 [ext_resource type="PackedScene" uid="uid://bkqrt4unvppam" path="res://Charecter/momo/momo.tscn" id="1_m1hm1"]
 [ext_resource type="Script" path="res://thems/base/game.gd" id="1_ogl7l"]
 [ext_resource type="PackedScene" uid="uid://tsuyculavnpe" path="res://thems/base/background.tscn" id="2_avamr"]
 [ext_resource type="Texture2D" uid="uid://c8wbcqoauleys" path="res://thems/base/ground.png" id="4_0jjnq"]
 [ext_resource type="Texture2D" uid="uid://b2etm28168we8" path="res://thems/base/ground1.png" id="5_3cl7f"]
+[ext_resource type="AudioStream" uid="uid://ewjb28ex5lrv" path="res://thems/reward.wav" id="6_053lc"]
+[ext_resource type="FontFile" uid="uid://x5i3h2cout4f" path="res://thems/Font.ttf" id="6_o456f"]
+[ext_resource type="Texture2D" uid="uid://dmjdttxpsvna2" path="res://thems/base/start.png" id="7_tr4j7"]
 
 [sub_resource type="Theme" id="Theme_bbhkx"]
-default_font_size = 70
+default_font = ExtResource("6_o456f")
+default_font_size = 90
+
+[sub_resource type="Theme" id="Theme_al25g"]
+default_font = ExtResource("6_o456f")
+default_font_size = 35
+
+[sub_resource type="Theme" id="Theme_44rjs"]
+default_font_size = 65
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ogl7l")
@@ -34,12 +45,23 @@ texture = ExtResource("5_3cl7f")
 
 [node name="Score" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = 516.0
-offset_top = 14.0
-offset_right = 668.0
-offset_bottom = 133.0
+offset_left = 533.0
+offset_top = 10.0
+offset_right = 685.0
+offset_bottom = 155.0
 theme = SubResource("Theme_bbhkx")
 text = "0"
+fit_content = true
+scroll_active = false
+
+[node name="HiScore" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 920.0
+offset_top = 21.0
+offset_right = 1153.0
+offset_bottom = 78.0
+theme = SubResource("Theme_al25g")
+text = "GSOAT: 0"
 fit_content = true
 
 [node name="up" type="Button" parent="."]
@@ -58,8 +80,56 @@ offset_bottom = 625.0
 action_mode = 0
 text = "Down"
 
+[node name="reard" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_053lc")
+volume_db = 0.23
+attenuation = 0.277393
+
+[node name="dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_053lc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
+
+[node name="KO" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Start" type="Button" parent="KO"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -70.0
+offset_right = 155.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Start" type="Sprite2D" parent="KO/Start"]
+position = Vector2(156.25, 67.6516)
+scale = Vector2(0.389764, 0.389764)
+texture = ExtResource("7_tr4j7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KO"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.5
+offset_top = 128.0
+offset_right = 178.5
+offset_bottom = 220.0
+grow_horizontal = 2
+theme = SubResource("Theme_44rjs")
+text = "Game over"
+
 [connection signal="area_entered" from="momo/Area2D" to="." method="_on_momo_colid"]
 [connection signal="button_down" from="up" to="momo" method="_on_up_button_down"]
 [connection signal="button_down" from="Down" to="momo" method="_on_down_button_down"]
+[connection signal="button_down" from="KO/Start" to="." method="_on_start_button_down"]
 
 [editable path="momo"]
